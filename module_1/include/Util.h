@@ -1,13 +1,12 @@
 //
-// Created by Apple on 2018/11/15.
+// Created by Apple on 2018/12/14.
 //
 
 #ifndef DEMO_TEST_UTIL_H
 #define DEMO_TEST_UTIL_H
 
-void sysHello();
+#include <string>
 
-int * retArray();
-
+void log(std::string logStr);
 
 #endif //DEMO_TEST_UTIL_H

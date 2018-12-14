@@ -4,31 +4,53 @@ project(demo_test)
 
 set(CMAKE_CXX_STANDARD 14)
 
-aux_source_directory(./src SRC_DIRS)
+message("++++++++++ 开始编译 ++++++++++")
 
-include_directories(./include)
+# 检测系统是否有支持工程使用的API
+include (CheckFunctionExists)
+# 检测printf 系统API是否存在
+# 存在则定义HAVE_PRINTF宏
+check_function_exists (printf HAVE_PRINTF)
 
+# 添加编译开关
+option(ENABLE_MAX "---- enable max ----" OFF)
 
-configure_file(
-        "${CMAKE_CURRENT_LIST_DIR}/src/config.h.in"
-        "${CMAKE_CURRENT_LIST_DIR}/src/test_config.h"
-)
-
-option(ENABLE_TEST_OPTITION "ENABLE_TEST_OPTITION DESC" OFF)
-
-# 设置一个自定义的宏变量
-if (ENABLE_TEST_OPTITION)
-    set(TEST_OPTITION 1)
+# 添加全局的宏 子模块和主模块的代码里面可以直接使用
+# 可以作为开关使用 控制代码的编译逻辑
+if (ENABLE_MAX)
+    add_definitions(-DSWI_ENABLE_MAX)
 endif ()
 
+# 设置变量 .h.in文件里面可以使用
+set(CMKAE_MAX_COUNT 2000)
+set(HAVE_PRINTF_XXX 3000)
 
-# 生成库
-add_library(demo_lib_hello SHARED ${SRC_DIRS} include/Bus.h src/test_extern.h src/test_extern.c)
+# 可以在执行ccmake命令的时候输入
+set(XXX_EXPIRE "" CACHE STRING "xxx_expire value")
 
-# 生成可执行文件
-add_executable(demo_test ${SRC_DIRS} include/Bus.h src/test_extern.h src/test_extern.c)
+# 给指定的目标添加宏
+# target_compile_definitions()
 
+# 添加源文件
+AUX_SOURCE_DIRECTORY(./src LOCAL_SRCS)
 
-# 通过cmakelist脚本添加宏 可以直接在源代码里面使用
-# 这样可以通过cmakelist脚本控制代码逻辑
-target_compile_definitions(demo_test PUBLIC ADD_DEFINE)
+# 添加 ./include 下面的头文件 到list变量HEADERS里面
+list(APPEND HEADERS ./include)
+
+# 添加子模块
+add_subdirectory(module_1)
+
+# 指定头文件的位置
+list(APPEND HEADERS ./module_1/include)
+# include_directories(./module_1/include)
+
+# 添加 module_1_lib_out库到 list变量EXERA_LIBS里面
+list(APPEND EXERA_LIBS  module_1_lib_out)
+
+# 指定头文件
+include_directories(${HEADERS})
+
+# 生成可执行文件main_exec
+add_executable(main_exec ${LOCAL_SRCS})
+
+target_link_libraries(main_exec ${EXERA_LIBS})
