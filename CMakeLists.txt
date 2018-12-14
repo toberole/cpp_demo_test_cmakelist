@@ -55,4 +55,5 @@ include_directories(${HEADERS})
 # 生成可执行文件main_exec
 add_executable(main_exec ${LOCAL_SRCS})
 
+# main_exec 依赖 ${EXERA_LIBS}
 target_link_libraries(main_exec ${EXERA_LIBS})
