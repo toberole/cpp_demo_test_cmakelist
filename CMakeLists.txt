@@ -21,6 +21,7 @@ if (ENABLE_MAX)
     add_definitions(-DSWI_ENABLE_MAX)
 endif ()
 
+# 构建工具可以通过 .h.in 文件生成 .h文件
 # 设置变量 .h.in文件里面可以使用
 set(CMKAE_MAX_COUNT 2000)
 set(HAVE_PRINTF_XXX 3000)
