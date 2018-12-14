@@ -38,7 +38,8 @@ AUX_SOURCE_DIRECTORY(./src LOCAL_SRCS)
 # 添加 ./include 下面的头文件 到list变量HEADERS里面
 list(APPEND HEADERS ./include)
 
-# 添加子模块
+# 添加子模块 两种方法均可
+# include(module_1/CMakeLists.txt)
 add_subdirectory(module_1)
 
 # 指定头文件的位置
