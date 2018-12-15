@@ -3,8 +3,7 @@
 //
 #include <iostream>
 
-#include "./../include/Util.h"
-
+#include "Util.h"
 #include "config.h"
 
 void log(std::string logStr) {

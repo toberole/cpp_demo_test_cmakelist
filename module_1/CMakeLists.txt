@@ -13,3 +13,5 @@ include_directories(./include)
 include_directories(${CMAKE_BINARY_DIR})
 
 add_library(module_1_lib_out ${DIR_SRCS})
+
+# install 指定library的安装路径

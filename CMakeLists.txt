@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD 14)
 
 message("++++++++++ 开始编译 ++++++++++")
 
-# 检测系统是否有支持工程使用的API
+# 检测系统是否有支持工程使用的 API
 include (CheckFunctionExists)
-# 检测printf 系统API是否存在
+# 检测printf系统API是否存在
 # 存在则定义HAVE_PRINTF宏
 check_function_exists (printf HAVE_PRINTF)
 
@@ -36,21 +36,21 @@ set(XXX_EXPIRE "" CACHE STRING "xxx_expire value")
 AUX_SOURCE_DIRECTORY(./src LOCAL_SRCS)
 
 # 添加 ./include 下面的头文件 到list变量HEADERS里面
-list(APPEND HEADERS ./include)
+list(APPEND HEADERS_DIR ./include)
 
 # 添加子模块 两种方法均可
 # include(module_1/CMakeLists.txt)
 add_subdirectory(module_1)
 
 # 指定头文件的位置
-list(APPEND HEADERS ./module_1/include)
+list(APPEND HEADERS_DIR ./module_1/include)
 # include_directories(./module_1/include)
 
 # 添加 module_1_lib_out库到 list变量EXERA_LIBS里面
 list(APPEND EXERA_LIBS  module_1_lib_out)
 
 # 指定头文件
-include_directories(${HEADERS})
+include_directories(${HEADERS_DIR})
 
 # 生成可执行文件main_exec
 add_executable(main_exec ${LOCAL_SRCS})
