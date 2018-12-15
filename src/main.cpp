@@ -14,7 +14,30 @@ Student getStudent() {
     return s;
 }
 
+char *GetString(void) {
+
+    char p[] = "hello world";
+
+    return p; // 编译器将提出警告
+
+}
+
+void Test4(void) {
+
+    char *str = NULL;
+
+    str = GetString(); // str 的内容是垃圾
+
+    std::cout << str << std::endl;
+
+}
+
+
 int main() {
+
+    Test4();
+
+
     std::cout << std::endl << "==== main start ====" << std::endl;
 
     // 通过cmakelist添加的宏

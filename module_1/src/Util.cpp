@@ -7,6 +7,7 @@
 #include "config.h"
 
 void log(std::string logStr) {
+    // 通过cmakelist脚本控制该宏
 #ifdef SWI_ENABLE_MAX
     std::cout << "moudle1 SWI_ENABLE_MAX" << std::endl;
 #endif
