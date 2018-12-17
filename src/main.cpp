@@ -18,9 +18,7 @@ Student getStudent() {
 
 char *GetString(void) {
 
-    char *p = "hello world";
-
-    return p; // 编译器将提出警告
+    return nullptr;
 
 }
 
@@ -30,7 +28,7 @@ void Test4(void) {
 
     str = GetString(); // str 的内容是垃圾
 
-    std::cout << str << std::endl;
+    // std::cout << str << std::endl;
 }
 
 void Test5() {
@@ -55,18 +53,40 @@ void Test6() {
     std::cout << "s2: " << s2 << std::endl;
 }
 
+void Test7() {
+    std::shared_ptr<Student> ss_ptr = std::make_shared<Student>();
+    std::shared_ptr<Student> sss_ptr = ss_ptr;
+    std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
+    std::cout << "sss_ptr = " << sss_ptr.use_count() << std::endl;
+}
+
+
+void Test8() {
+    // 用 "&&" 定义右值引用
+    int a = 10;
+
+    // 左值引用 只能用变量赋值
+    int &aa = a;
+
+    // 右值引用 可以用右值赋值
+    int &&kk = 10;
+
+    std::cout << "aa = " << aa << " kk= " << kk << std::endl;
+
+    std::cout << "aa address = " << &aa << " kk address = " << &kk << std::endl;
+}
+
 
 int main() {
     std::cout << std::endl << "==== main start ====" << std::endl;
     log("hello Cmakelist");
 
-    Test6();
+    Test8();
 
     // 通过cmakelist添加的宏
 #ifdef SWI_ENABLE_MAX
     std::cout << "main moudle SWI_ENABLE_MAX" << std::endl;
 #endif
-
 
     getchar();
     return 0;

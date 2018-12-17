@@ -6,7 +6,7 @@
 #include <iostream>
 
 Student::Student() {
-
+    std::cout << "Student 默认构造函数" << std::endl;
 }
 
 Student::Student(int _age, std::string _name) :
@@ -15,7 +15,7 @@ Student::Student(int _age, std::string _name) :
 }
 
 Student::~Student() {
-
+    std::cout << "Student 析构函数" << std::endl;
 }
 
 void Student::sysHello() {
