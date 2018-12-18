@@ -6,6 +6,7 @@
 #define DEMO_TEST_STUDENT_H
 
 #include <string>
+#include "Book.h"
 
 class Student {
 public:
@@ -19,6 +20,7 @@ public:
     void sysHello();
 
 public:
+    Book book;
     int age;
     std::string name;
 };

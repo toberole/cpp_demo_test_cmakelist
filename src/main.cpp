@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Util.h"
+#include "Book.h"
 #include "Student.h"
 
 Student getStudent() {
@@ -76,12 +77,30 @@ void Test8() {
     std::cout << "aa address = " << &aa << " kk address = " << &kk << std::endl;
 }
 
+void Test9() {
+    std::string str = "hello";
+    std::string str_moved = std::move(str);
+
+    std::cout << "str_moved = " << str_moved << " str = " << str << std::endl;
+}
+
+void Test10(Student student) {
+    std::cout << "Test10 book address: " << &student.book << std::endl;
+
+    std::cout << "price: " << student.book.price << std::endl;
+}
+
 
 int main() {
     std::cout << std::endl << "==== main start ====" << std::endl;
     log("hello Cmakelist");
 
-    Test8();
+    Student student(22,"c++ dev");
+    std::cout << "book address: " << &student.book << std::endl;
+    Test10(student);
+    std::cout << "==============" << std::endl;
+    student.book.price = 20;
+
 
     // 通过cmakelist添加的宏
 #ifdef SWI_ENABLE_MAX
