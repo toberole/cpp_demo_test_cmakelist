@@ -3,10 +3,16 @@
 //
 #include <iostream>
 #include <string>
+#include <thread>
+#include <chrono>
+#include <functional>
 
 #include "Util.h"
+
+#include "Anim.h"
 #include "Book.h"
 #include "Student.h"
+
 
 Student getStudent() {
     Student s;
@@ -18,9 +24,7 @@ Student getStudent() {
 }
 
 char *GetString(void) {
-
     return nullptr;
-
 }
 
 void Test4(void) {
@@ -86,21 +90,116 @@ void Test9() {
 
 void Test10(Student student) {
     std::cout << "Test10 book address: " << &student.book << std::endl;
-
     std::cout << "price: " << student.book.price << std::endl;
 }
 
+void Test11() {
+    Student ss(22, "C++ Dev");
+    Student s2 = std::move(ss);
+
+    std::cout << s2.age << "  " << s2.name << std::endl;
+
+    std::cout << ss.age << "  " << ss.name << std::endl;
+}
+
+void Test12() {
+    Book b1(11, "hello book");
+    Book b2 = std::move(b1);
+
+    std::cout << "*************" << std::endl;
+
+    std::cout << b1.name << "  " << b1.price << std::endl;
+
+    std::cout << "=============" << std::endl;
+
+    std::cout << b2.name << "  " << b2.price << std::endl;
+}
+
+void Test13() {
+    std::shared_ptr<Book> b1(new Book());
+    std::shared_ptr<Book> b2 = b1;
+
+    std::cout << "+++++++++++++++++" << std::endl;
+}
+
+void Test14() {
+    Student s;
+    std::cout << s.isP << std::endl;
+}
+
+void Test15() {
+    Anim anim;
+    anim.age = 11;
+}
+
+void Test16(Book &b) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+    std::cout << &b << std::endl;
+    std::cout << b.price << std::endl;
+    std::cout << "Test16 stop" << std::endl;
+}
+
+void Test17() {
+    Book b;
+    std::cout << " main " << &b << std::endl;
+    b.price = 99;
+
+    std::thread th(Test16, std::ref(b));
+    th.detach();
+    std::cout << " main detach()" << &b << std::endl;
+
+}
+
+void sysName(int i, int j) {
+    std::cout << "i: " << i << " j: " << j << std::endl;
+}
+
+void Test18() {
+    Book b;
+    std::function<void(int, int)> fun = sysName;
+    b.sysName(fun, "main sysName pointer");
+}
+
+void Test19() {
+    Book b;
+    std::shared_ptr<Book> sb(&b);
+
+    std::cout << sb->price << std::endl;
+}
+
+void Test_Thread() {
+    std::cout << "hello exception" << std::endl;
+
+    throw "hello throw";
+}
+
+void Test20() {
+    try {
+        std::thread th(Test_Thread);
+        th.join();
+    } catch (char const *e) {
+        std::cout << e << std::endl;
+    }
+}
+
+int *Test21() {
+    int arr[] = {1, 2, 3};
+
+    return arr;// 在栈上分配的内存，函数结束之后，内存被自动回收 收据就不可预测了
+}
 
 int main() {
-    std::cout << std::endl << "==== main start ====" << std::endl;
-    log("hello Cmakelist");
+    std::cout << "------- main -------" << std::endl;
 
-    Student student(22,"c++ dev");
-    std::cout << "book address: " << &student.book << std::endl;
-    Test10(student);
-    std::cout << "==============" << std::endl;
-    student.book.price = 20;
+    // int arr[] = {1,2,3};
+    // std::cout << sizeof(arr) << std::endl;
+    int *arr = Test21();
+    for (int i = 0; i < 3; ++i) {
+        std::cout << arr[i] << std::endl;
+    }
 
+    std::cout << "*******************************************************" << std::endl;
 
     // 通过cmakelist添加的宏
 #ifdef SWI_ENABLE_MAX

@@ -21,6 +21,7 @@ public:
 
 public:
     Book book;
+    bool isP = true;
     int age;
     std::string name;
 };
