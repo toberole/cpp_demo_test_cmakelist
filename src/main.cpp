@@ -12,7 +12,8 @@
 #include "Anim.h"
 #include "Book.h"
 #include "Student.h"
-
+#include <A.h>
+#include "B.h"
 
 Student getStudent() {
     Student s;
@@ -189,15 +190,26 @@ int *Test21() {
     return arr;// 在栈上分配的内存，函数结束之后，内存被自动回收 收据就不可预测了
 }
 
+void Test22() {
+    A *a = new B();
+    a->sys();
+}
+
 int main() {
     std::cout << "------- main -------" << std::endl;
 
+    // Test22();
+    log("hello C");
+
+    std::cout << age << std::endl;
+
+
     // int arr[] = {1,2,3};
     // std::cout << sizeof(arr) << std::endl;
-    int *arr = Test21();
-    for (int i = 0; i < 3; ++i) {
-        std::cout << arr[i] << std::endl;
-    }
+//    int *arr = Test21();
+//    for (int i = 0; i < 3; ++i) {
+//        std::cout << arr[i] << std::endl;
+//    }
 
     std::cout << "*******************************************************" << std::endl;
 

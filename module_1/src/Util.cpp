@@ -11,7 +11,5 @@ void log(std::string logStr) {
 #ifdef SWI_ENABLE_MAX
     std::cout << "moudle1 SWI_ENABLE_MAX" << std::endl;
 #endif
-
-
-    std::cout << logStr << std::endl;
+    std::cout << __FILE__ << "  " << __LINE__ << "  " << logStr << std::endl;
 }

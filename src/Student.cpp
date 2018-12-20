@@ -5,6 +5,8 @@
 #include "Student.h"
 #include <iostream>
 
+int curr_count = 0;
+
 Student::Student() {
     std::cout << "Student 默认构造函数" << std::endl;
 }
