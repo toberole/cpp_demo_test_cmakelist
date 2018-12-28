@@ -6,7 +6,7 @@
 #include "Book.h"
 
 Book::Book() {
-
+    std::cout << "Book::Book() 构造函数" << std::endl;
 }
 
 Book::Book(int _price, std::string _name) :

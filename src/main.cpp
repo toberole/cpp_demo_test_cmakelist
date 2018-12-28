@@ -6,6 +6,9 @@
 #include <thread>
 #include <chrono>
 #include <functional>
+#include <future>
+
+#include <cstring>
 
 #include "Util.h"
 
@@ -14,6 +17,10 @@
 #include "Student.h"
 #include <A.h>
 #include "B.h"
+
+#include "Singleton.h"
+
+#include <cassert>
 
 Student getStudent() {
     Student s;
@@ -195,21 +202,111 @@ void Test22() {
     a->sys();
 }
 
+void Test23() {
+    Book b;
+    std::cout << b.price << std::endl;
+
+    std::cout << std::boolalpha;
+}
+
+void Test24() {
+    char cstr[] = "hello world Tom ";
+    char cstr1[] = "hello kit ";
+    strcat(cstr, cstr1);
+
+    std::cout << cstr << strlen(cstr) << std::endl;
+}
+
+void Test25() {
+    Singleton *instance = Singleton::getInstance();
+    instance->sysHello();
+}
+
+void Test26() {
+    int i = 0;
+
+    std::cout << sizeof(i) << std::endl;
+
+    char arr[] = {'a', 'b', 'c'};
+
+    std::cout << "sizeof(arr): " << sizeof(arr) << std::endl;
+
+    char *p = "hello world";
+
+    std::cout << "p len: " << strlen(p) << std::endl;
+
+    std::cout << "arr len: " << strlen(arr) << std::endl;
+
+    assert(0);
+
+    std::cout << " after assert " << std::endl;
+}
+
+void Test27() {
+    std::error_code ec(-1, std::generic_category());
+    // std::system_error se;
+    std::cout << "value: " << ec.value() << " message: " << ec.message() << std::endl;
+}
+
+enum Data {
+    DATA1, DATA2, DATA3, DATA4
+};
+
+void Test28() {
+    Data d(DATA2);
+
+    size_t t;
+    std::cout << "Data: " << d << std::endl;
+}
+
+struct TT {
+    std::string name;
+};
+
+#include <ctype.h>
+
+
+void Test29() {
+    std::string str = "hello world";
+
+}
+
+
+// std::async
+void Test30() {
+    std::future<int> res = std::async(std::launch::async, []() {
+        // std::cout << "" << std::endl;
+        return 1;
+    });
+
+    //std::future_status rr = res.wait_for(std::chrono::milliseconds(1000*2));
+
+    //std::cout << "res_i: " << res_i << std::endl;
+}
+
+// std::bind
+// std::thread th(std::bind(Test31,11));
+void Test31(int n) {
+    std::cout << "n: " << n << std::endl;
+}
+
+// int kk = 22;
+// std::thread th1(std::bind(Test32, std::ref(kk)));
+void Test32(int &n) {
+    std::cout << "n: " << n << std::endl;
+}
+
+// placeholders  占位符
+// auto ff = std::bind(Test35, 1,std::placeholders::_1);
+// ff(33);
+// 注意占位符是 传引用的
+void Test35(int a, int b) {
+    std::cout << "a: " << a << " b: " << b << std::endl;
+}
+
 int main() {
     std::cout << "------- main -------" << std::endl;
 
-    // Test22();
-    log("hello C");
-
-    std::cout << age << std::endl;
-
-
-    // int arr[] = {1,2,3};
-    // std::cout << sizeof(arr) << std::endl;
-//    int *arr = Test21();
-//    for (int i = 0; i < 3; ++i) {
-//        std::cout << arr[i] << std::endl;
-//    }
 
     std::cout << "*******************************************************" << std::endl;
 
