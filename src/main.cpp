@@ -304,9 +304,31 @@ void Test35(int a, int b) {
     std::cout << "a: " << a << " b: " << b << std::endl;
 }
 
+// 动态绑定只有当通过指针或引用调用虚函数时才会发生。
+void Test36() {
+    B b;
+    A a = b;
+    // 执行A的sys方法
+    a.sys();
+
+    // 执行B的sys方法
+    A &a1 = b;
+    a1.sys();
+}
+
 int main() {
     std::cout << "------- main -------" << std::endl;
 
+    std::thread th1([]() {
+        std::cout << "== th1 ==" << std::endl;
+    });
+
+    std::thread th2([]() {
+        std::cout << "== th2 ==" << std::endl;
+    });
+
+    th1.join();
+    th2.join();
 
     std::cout << "*******************************************************" << std::endl;
 
@@ -315,6 +337,6 @@ int main() {
     std::cout << "main moudle SWI_ENABLE_MAX" << std::endl;
 #endif
 
-    getchar();
+    // getchar();
     return 0;
 }

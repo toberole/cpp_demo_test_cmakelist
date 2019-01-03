@@ -6,6 +6,10 @@
 
 #include <iostream>
 
+B::~B() {
+    std::cout << "B::~B()" << std::endl;
+}
+
 void B::sys() {
-    std::cout << "B::sys" << std::endl;
+    std::cout << " B::sys" << std::endl;
 }

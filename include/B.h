@@ -9,6 +9,7 @@
 
 class B : public A {
 public:
+    ~B();
     void sys();
 };
 

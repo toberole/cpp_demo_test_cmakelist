@@ -11,6 +11,7 @@ namespace {
 
 class A {
 public:
+    ~ A();
     virtual void sys();
 };
 
