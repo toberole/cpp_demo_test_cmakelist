@@ -337,6 +337,6 @@ int main() {
     std::cout << "main moudle SWI_ENABLE_MAX" << std::endl;
 #endif
 
-    // getchar();
+    getchar();
     return 0;
 }

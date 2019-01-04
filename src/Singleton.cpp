@@ -16,8 +16,8 @@ Singleton::Singleton(const Singleton &) {
 
 }
 
-Singleton &Singleton::operator=(const Singleton &) {
-
+Singleton &Singleton::operator=(const Singleton &_instance) {
+	return *instance;
 }
 
 Singleton *Singleton::getInstance() {

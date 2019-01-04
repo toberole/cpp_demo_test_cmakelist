@@ -1,4 +1,4 @@
-//
+﻿//
 // Created by Apple on 2018/12/18.
 //
 #include <iostream>
@@ -6,7 +6,7 @@
 #include "Book.h"
 
 Book::Book() {
-    std::cout << "Book::Book() 构造函数" << std::endl;
+    std::cout << "Book::Book()构造函数"<< std::endl;
 }
 
 Book::Book(int _price, std::string _name) :
