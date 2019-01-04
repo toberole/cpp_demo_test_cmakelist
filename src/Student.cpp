@@ -1,4 +1,4 @@
-//
+﻿//
 // Created by Apple on 2018/12/14.
 //
 
@@ -8,7 +8,7 @@
 int curr_count = 0;
 
 Student::Student() {
-    std::cout << "Student 默认构造函数" << std::endl;
+	std::cout << "Student 构造函数"<< std::endl;
 }
 
 Student::Student(int _age, std::string _name) :
