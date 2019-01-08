@@ -7,6 +7,7 @@
 #include <chrono>
 #include <functional>
 #include <future>
+#include <set>
 
 #include <cstring>
 
@@ -316,9 +317,7 @@ void Test36() {
     a1.sys();
 }
 
-int main() {
-    std::cout << "------- main -------" << std::endl;
-
+void Test37() {
     std::thread th1([]() {
         std::cout << "== th1 ==" << std::endl;
     });
@@ -329,6 +328,40 @@ int main() {
 
     th1.join();
     th2.join();
+}
+
+void Test38(){
+    std::shared_ptr<Student> ss_ptr = std::make_shared<Student>();
+    // std::shared_ptr<Student> sss_ptr = ss_ptr;
+    std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
+    // std::cout << "sss_ptr = " << sss_ptr.use_count() << std::endl;
+
+    std::set<std::shared_ptr<Student>> s;
+    // insert 操作做的是值拷贝操作 指针的引用计数加1
+    s.insert(ss_ptr);
+    std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
+
+    // erase 操作指针的引用计数减1
+    s.erase(ss_ptr);
+
+    std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
+}
+
+void Test39(const int i){
+    i++;
+}
+
+int main() {
+    std::cout << "------- main -------" << std::endl;
+
+    Test38();
+
+    int i = 1;
+    std::cout << "------- i addr -------" << &i << std::endl;
+
+    std::thread th1([i]() {
+        std::cout << "------- i addr -------" << &i << std::endl;
+    });
 
     std::cout << "*******************************************************" << std::endl;
 
