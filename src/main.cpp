@@ -347,14 +347,23 @@ void Test38(){
     std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
 }
 
-void Test39(const int i){
-    i++;
+void Test39(const int n){
+    int *arr = new int[n];
+    for (int i = 0; i < n; ++i) {
+        arr[i] = i;
+    }
+
+    for (int j = 0; j < n; ++j) {
+        std::cout<<arr[j]<<std::endl;
+    }
+
+    delete []arr;
 }
 
 int main() {
     std::cout << "------- main -------" << std::endl;
 
-    Test38();
+    Test39(5);
 
     int i = 1;
     std::cout << "------- i addr -------" << &i << std::endl;
