@@ -10,6 +10,9 @@
 #include <set>
 
 #include <cstring>
+#include <stdio.h>
+
+
 
 #include "Util.h"
 
@@ -362,15 +365,6 @@ void Test39(const int n){
 
 int main() {
     std::cout << "------- main -------" << std::endl;
-
-    Test39(5);
-
-    int i = 1;
-    std::cout << "------- i addr -------" << &i << std::endl;
-
-    std::thread th1([i]() {
-        std::cout << "------- i addr -------" << &i << std::endl;
-    });
 
     std::cout << "*******************************************************" << std::endl;
 
