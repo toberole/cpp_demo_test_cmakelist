@@ -13,7 +13,6 @@
 #include <stdio.h>
 
 
-
 #include "Util.h"
 
 #include "Anim.h"
@@ -268,6 +267,7 @@ struct TT {
 };
 
 #include <ctype.h>
+#include <cmath>
 
 
 void Test29() {
@@ -333,7 +333,7 @@ void Test37() {
     th2.join();
 }
 
-void Test38(){
+void Test38() {
     std::shared_ptr<Student> ss_ptr = std::make_shared<Student>();
     // std::shared_ptr<Student> sss_ptr = ss_ptr;
     std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
@@ -350,23 +350,55 @@ void Test38(){
     std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
 }
 
-void Test39(const int n){
+void Test39(const int n) {
     int *arr = new int[n];
     for (int i = 0; i < n; ++i) {
         arr[i] = i;
     }
 
     for (int j = 0; j < n; ++j) {
-        std::cout<<arr[j]<<std::endl;
+        std::cout << arr[j] << std::endl;
     }
 
-    delete []arr;
+    delete[]arr;
+}
+
+void test40() {
+    double i = 0;
+    i = pow(3, 5);
+    std::cout << i << std::endl;
+}
+
+void test41() {
+    char ch = 1;
+    std::cin >> ch;
+    std::cout << "ch: " << ch << std::endl;
+}
+
+void test42() {
+    char ch = '\007';
+    std::cout << ch << std::endl;
+}
+
+void test43() {
+    // int i = true;
+    int arr[10];
+    arr[1] = 100;
+
+    int arr1[] = {1, 2, 3, 4};
+    std::cout << sizeof(arr1) / sizeof(int);
+
+//    wchar_t ch;
+//    std::wcin >> ch;
+//    std::wcout << ch << std::endl;
 }
 
 int main() {
     std::cout << "------- main -------" << std::endl;
 
     std::cout << "*******************************************************" << std::endl;
+
+    test43();
 
     // 通过cmakelist添加的宏
 #ifdef SWI_ENABLE_MAX
