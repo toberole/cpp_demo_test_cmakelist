@@ -25,6 +25,8 @@
 
 #include <cassert>
 
+#include "Smart_Pointer.cpp"
+
 Student getStudent() {
     Student s;
     s.age = 22;
@@ -272,9 +274,7 @@ struct TT {
 
 void Test29() {
     std::string str = "hello world";
-
 }
-
 
 // std::async
 void Test30() {
@@ -393,12 +393,83 @@ void test43() {
 //    std::wcout << ch << std::endl;
 }
 
+union tt {
+    int i;
+    long j;
+};
+
+void test44() {
+    try {
+        throw "hello";
+    } catch (std::exception e) {
+        // e.what();
+        std::cout << "std::exception e" << std::endl;
+    }
+}
+
+void test45() {
+    std::shared_ptr<Student> ss_ptr = std::make_shared<Student>();
+    std::shared_ptr<Student> sss_ptr = ss_ptr;
+    std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
+    std::cout << "sss_ptr = " << sss_ptr.use_count() << std::endl;
+
+    // auto_ptr
+    std::auto_ptr<SmartPointer> auto_ptr_sp(new SmartPointer);
+    std::auto_ptr<SmartPointer> auto_ptr_sp1 = auto_ptr_sp;
+    // std::cout << "auto_ptr_sp 引用计数: " << auto_ptr_sp.use_count() <<
+
+    // std::shared_ptr<SmartPointer> sp = std::make_shared(new SmartPointer);
+}
+
+// 使用模版方法
+#include "template_method.h"
+
+void test46() {
+    int a = 10;
+    int b = 20;
+    std::cout << "a = " << a << " b = " << b << std::endl;
+    swap_<int>(a, b);
+    std::cout << "a = " << a << " b = " << b << std::endl;
+}
+
+// 使用模版类
+//#include "template_class.h"
+//void test47() {
+//    Stack<int> stack;
+//    stack.push(100);
+//    std::cout << "pop= " << stack.pop() << std::endl;
+//}
+
 int main() {
     std::cout << "------- main -------" << std::endl;
 
     std::cout << "*******************************************************" << std::endl;
 
-    test43();
+
+
+
+
+//    tt t;
+//    t.i = 100;
+//    std::cout << t.j << std::endl;
+//    std::cout << t.i << std::endl;
+
+//    std::cout << "test43 " << (long) test43 << std::endl;
+
+
+//    try {
+//        test44();
+//    } catch (const char *e) {
+//        std::cout << e << std::endl;
+//    }
+
+
+
+//    if (1 == 1) abort();
+//
+//    std::cout << "abort " << std::endl;
+
+    // test43();
 
     // 通过cmakelist添加的宏
 #ifdef SWI_ENABLE_MAX
