@@ -20,7 +20,7 @@
 #include "Student.h"
 #include <A.h>
 #include "B.h"
-
+#include "Vptr_Impl.h"
 #include "Singleton.h"
 
 #include <cassert>
@@ -77,7 +77,6 @@ void Test7() {
     std::cout << "ss_ptr = " << ss_ptr.use_count() << std::endl;
     std::cout << "sss_ptr = " << sss_ptr.use_count() << std::endl;
 }
-
 
 void Test8() {
     // 用 "&&" 定义右值引用
@@ -253,16 +252,16 @@ void Test27() {
     std::cout << "value: " << ec.value() << " message: " << ec.message() << std::endl;
 }
 
-enum Data {
-    DATA1, DATA2, DATA3, DATA4
-};
-
-void Test28() {
-    Data d(DATA2);
-
-    size_t t;
-    std::cout << "Data: " << d << std::endl;
-}
+//enum Data {
+//    DATA1, DATA2, DATA3, DATA4
+//};
+//
+//void Test28() {
+//    Data d(DATA2);
+//
+//    size_t t;
+//    std::cout << "Data: " << d << std::endl;
+//}
 
 struct TT {
     std::string name;
@@ -440,13 +439,28 @@ void test46() {
 //    std::cout << "pop= " << stack.pop() << std::endl;
 //}
 
+#include "Data.h"
+
+void test50() {
+    // Data data;
+    // Data data1 = std::move(data);
+
+    Data data = std::move(Data());
+    std::cout << "------- move data -------" << std::endl;
+
+}
+
+void test51() {
+    std::cout << "vptr size: "<<sizeof(Vptr_Impl) << std::endl;
+}
+
 int main() {
     std::cout << "------- main -------" << std::endl;
 
     std::cout << "*******************************************************" << std::endl;
 
-
-
+    Test6();
+    test51();
 
 
 //    tt t;
