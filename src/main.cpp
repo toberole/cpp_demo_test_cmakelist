@@ -454,7 +454,7 @@ void test51() {
     std::cout << "vptr size: "<<sizeof(Vptr_Impl) << std::endl;
 }
 
-int main() {
+int main0() {
     std::cout << "------- main -------" << std::endl;
 
     std::cout << "*******************************************************" << std::endl;
