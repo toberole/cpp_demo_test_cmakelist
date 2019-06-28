@@ -7,25 +7,25 @@
 #include <iostream>
 
 Data::Data() {
-    std::cout << "Data::Data()" << std::endl;
+    std::cout << "Data 默认构造" << std::endl;
 }
 
 Data::Data(const Data &data) {
-    std::cout << "拷贝构造" << std::endl;
+    std::cout << "Data 拷贝构造" << std::endl;
 }
 
 Data::Data(const Data &&data) {
-    std::cout << "移动构造" << std::endl;
+    std::cout << "Data 移动构造" << std::endl;
 }
 
 Data &Data::operator=(const Data &data) {
-    std::cout << "赋值运算" << std::endl;
+    std::cout << "Data 赋值运算" << std::endl;
 }
 
 Data &Data::operator=(const Data &&data) {
-    std::cout << "Move assignment operator" << std::endl;
+    std::cout << "Data Move assignment operator" << std::endl;
 }
 
 Data::~Data() {
-    std::cout << "Data::~Data()" << std::endl;
+    std::cout << "Data 析构函数" << std::endl;
 }

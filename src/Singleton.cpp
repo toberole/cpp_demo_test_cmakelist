@@ -1,6 +1,4 @@
-﻿//
-// Created by Apple on 2018/12/24.
-//
+﻿
 
 #include "Singleton.h"
 
