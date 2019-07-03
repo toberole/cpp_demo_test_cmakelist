@@ -4,9 +4,11 @@
 #include <vector>
 #include <array>
 #include <string>
+#include <thread>
 
 #include "Vptr_Impl.h"
 #include "Data.h"
+#include "Stock.h"
 
 typedef struct Student {
     std::string name;
@@ -112,7 +114,6 @@ void test_main09() {
     wchar_t wch[] = L"hello";
     char16_t ch_1_6[] = u"hello";
     char32_t ch_3_2[] = U"hello";
-
 }
 
 void test_main10() {
@@ -207,7 +208,6 @@ void test_main16() {
     std::cout << "+++++++++++++++" << std::endl;
     std::array<Data, 5> arr;
     arr[0] = data;
-
 }
 
 void test_main17() {
@@ -224,10 +224,126 @@ int *test_main18() {
     std::cout << "p size: " << sizeof(p) << "  " << p << std::endl;
 }
 
-int main() {
-    test_main18();
+void test_main19() {
+    stu *s = new stu();
+    s->age = 11;
+    s->name = "hello stu";
+    std::cout << "name: " << s->name << " age: " << s->age << std::endl;
+}
 
-    std::cout << "press any key to exit ..." << std::endl;
+void test_main20() {
+    int i = 20;
+    int &ii = i;
+    int *p = &ii;
+
+    std::cout << p << std::endl;
+}
+
+void test_main_21(const int &a) {
+
+}
+
+void test_main21() {
+    int i = 11;
+    int *p = &i;
+    int &ii = *p;
+
+    test_main_21(11);
+
+    std::cout << ii << "  " << *p << std::endl;
+}
+
+void test_main_22(const stu &a) {
+    std::cout << a.age << std::endl;
+}
+
+void test_main22() {
+    stu stu1;
+    stu1.age = 11;
+
+    test_main_22(stu1);
+}
+
+template<class T>
+void swap(T &t1, T &t2) {
+    T temp;
+    temp = t1;
+    t1 = t2;
+    t2 = temp;
+}
+
+template<typename T>
+void swap1(T tt);
+
+void test_main23() {
+    int n = 10;
+    int m = 20;
+    swap(n, m);
+
+    std::cout << n << "  " << m << std::endl;
+}
+
+int global = 110;
+
+void test_main24_0() {
+    // 局部
+    int global = 220;
+    std::cout << "局部 global: " << global << std::endl;
+
+    // 全局 "::"作用域解析运算符 该运算符表示使用全局版本
+    std::cout << "全局 global: " << ::global << std::endl;
+}
+
+void test_main24() {
+    // 声明使用全局global
+    extern int global;
+    std::cout << "全局 global: " << global << std::endl;
+    test_main24_0();
+}
+
+int test = 666;
+
+void test_main25_0() {
+    std::cout << "\ntest_main25_0" << std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+    std::cout << "**** test_main25_0 test: " << test << std::endl;
+}
+
+void test_main25_1(int i) {
+    std::cout << "\ntest_main25_1 i: " << i << std::endl;
+}
+
+/**
+ * detach模式下，主线程死了 子线程也会死掉
+ */
+void test_main25() {
+    std::thread th(test_main25_0);
+    std::thread th1(test_main25_1, 222);
+    th.join();
+    th1.join();
+}
+
+namespace com {
+    void test_main25() {
+        std::thread th(test_main25_0);
+        std::thread th1(test_main25_1, 222);
+        th.join();
+        th1.join();
+    }
+}
+
+int main() {
+    Stock stock;
+
+
+
+    char *chs = new char[1024];
+    stu *p = (stu *) chs;
+    p->age = 11;
+
+    std::cout << p->age << std::endl;
+
+    std::cout << "\npress any key to exit ..." << std::endl;
     getchar();
     return 0;
 }

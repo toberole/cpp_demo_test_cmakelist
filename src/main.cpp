@@ -27,6 +27,9 @@
 
 #include "Smart_Pointer.cpp"
 
+
+int kkkkkk;
+
 Student getStudent() {
     Student s;
     s.age = 22;
