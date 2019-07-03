@@ -22,6 +22,9 @@ public:
     }
 
     void test_inline();
+
+    // 'static' can only be specified inside the class definition
+    static void test_static();
 };
 
 

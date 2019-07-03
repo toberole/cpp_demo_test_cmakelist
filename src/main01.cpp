@@ -332,16 +332,15 @@ namespace com {
     }
 }
 
-int main() {
+void test_main26() {
     Stock stock;
+    stock.update();
+    stock.test_static();
+    Stock::test_static();
+}
 
-
-
-    char *chs = new char[1024];
-    stu *p = (stu *) chs;
-    p->age = 11;
-
-    std::cout << p->age << std::endl;
+int main() {
+    test_main26();
 
     std::cout << "\npress any key to exit ..." << std::endl;
     getchar();

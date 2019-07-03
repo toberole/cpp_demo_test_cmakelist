@@ -1,7 +1,3 @@
-//
-// Created by Apple on 2019/7/3.
-//
-
 #include "Stock.h"
 
 #include <iostream>
@@ -15,4 +11,11 @@ void Stock::update() {
  */
 inline void Stock::test_inline() {
     std::cout << "inline Stock::test_inline" << std::endl;
+}
+
+/**
+ * 定义的时候不能加static关键字
+ */
+void Stock::test_static() {
+    std::cout << "inline Stock::test_static" << std::endl;
 }
