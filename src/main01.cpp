@@ -3,7 +3,7 @@
 #include <climits>
 #include <vector>
 #include <array>
-#include <string>
+#include <string.h>
 #include <thread>
 
 #include "Vptr_Impl.h"
