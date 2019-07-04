@@ -46,3 +46,24 @@ inline void Stock::test_inline() {
 void Stock::test_static() {
     std::cout << "inline Stock::test_static" << std::endl;
 }
+
+void Stock::operator+(Stock &stock) {
+    this->n = this->n + stock.n;
+}
+
+// 友元函数
+Stock operator*(int n, const Stock &stock) {
+    Stock s;
+    s.n = n * stock.n;
+    return s;
+}
+
+Stock Stock::operator*(const Stock &stock) {
+    Stock s;
+    s.n = n * stock.n;
+    return s;
+}
+
+void operator<<(std::ostream &os, const Stock &s) {
+    os << s.n << std::endl;
+}

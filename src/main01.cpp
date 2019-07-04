@@ -9,6 +9,8 @@
 #include "Vptr_Impl.h"
 #include "Data.h"
 #include "Class_Stock.h"
+#include "Class_demo.h"
+#include "Enum_Demo.h"
 
 typedef struct Student {
     std::string name;
@@ -333,6 +335,19 @@ namespace com {
 }
 
 /**
+ * 枚举
+ */
+void test_main27() {
+    enum day d = day1;
+    if (d == 0) {
+        std::cout << "d == 0" << std::endl;
+    }
+
+    day4 dd = day4::day31;
+    std::cout << "dd: " << (int) dd << std::endl;
+}
+
+/**
  * 类
  */
 void test_main26() {
@@ -350,7 +365,7 @@ void test_main26() {
     stock3->sys();
     delete (stock3);
 
-    // 注意： malloc分配的内存 只能用free释放
+    // 注意:malloc分配的内存 只能用free释放
     std::cout << "malloc分配的内存 只能用free释放" << std::endl;
     Stock *stock4 = (Stock *) malloc(sizeof(Stock));
     stock4->sys();
@@ -369,6 +384,27 @@ void test_main26() {
 //    const Stock stock6;
 //    stock6.n = 20;
 
+    /**
+     * 编译器首先会使用默认的构造函数来创建数组元素
+     * 然后创建临时的对象 随后将临时对象的内容复制到相应的元素中
+     * 因此 要创建类对象数组，那么这个类必须由默认的构造函数。
+     */
+    // 错误 该类没有提供默认构造函数
+    // Class_demo cds[4];
+
+    Stock stock6;
+    stock6.n = 11;
+    Stock stock7;
+    stock7.n = 22;
+    stock6 + stock7;
+    std::cout << "stock6 + stock7: " << stock6.n << std::endl;
+
+    Stock stock8;
+    stock8.n = 10;
+    int n = 10;
+    stock8 = n * stock8;
+    std::cout << "stock8.n: " << stock8.n << std::endl;
+    std::cout << "hello---- " << stock8;
 
 }
 
