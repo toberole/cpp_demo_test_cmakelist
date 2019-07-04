@@ -8,7 +8,7 @@
 
 #include "Vptr_Impl.h"
 #include "Data.h"
-#include "Stock.h"
+#include "Class_Stock.h"
 
 typedef struct Student {
     std::string name;
@@ -332,11 +332,44 @@ namespace com {
     }
 }
 
+/**
+ * 类
+ */
 void test_main26() {
     Stock stock;
     stock.update();
     stock.test_static();
     Stock::test_static();
+
+    Stock stock1("hello1");
+    Stock stock2 = Stock("hello2");
+    stock1.sys();
+    stock2.sys();
+
+    Stock *stock3 = new Stock("hello3");
+    stock3->sys();
+    delete (stock3);
+
+    // 注意： malloc分配的内存 只能用free释放
+    std::cout << "malloc分配的内存 只能用free释放" << std::endl;
+    Stock *stock4 = (Stock *) malloc(sizeof(Stock));
+    stock4->sys();
+    free(stock4);
+
+    const Stock stock5;
+    stock5.sys_const();
+    // 错误调用 sys没有用const声明
+    // stock5.sys();
+
+    // 错误调用 sys没有用const声明
+//    const Stock *stock5_p;
+//    stock5_p->sys();
+
+    // 错误调用 不能修改const对象
+//    const Stock stock6;
+//    stock6.n = 20;
+
+
 }
 
 int main() {
