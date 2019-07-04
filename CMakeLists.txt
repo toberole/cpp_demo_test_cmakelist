@@ -47,7 +47,7 @@ list(APPEND HEADERS_DIR ./module_1/include)
 # include_directories(./module_1/include)
 
 # 添加 module_1_lib_out库到 list变量EXERA_LIBS里面
-list(APPEND EXERA_LIBS  module_1_lib_out)
+list(APPEND EXERA_LIBS  module_1_lib_out pthread)
 
 # 指定头文件
 include_directories(${HEADERS_DIR})
