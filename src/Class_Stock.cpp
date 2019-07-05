@@ -6,6 +6,10 @@ Stock::Stock() {
     std::cout << "无参构造 hello stock" << std::endl;
 }
 
+Stock::Stock(int n) {
+    this->n = n;
+}
+
 //Stock::Stock(int i = 1, std::string name = "hello") {
 //    this->name = name;
 //    this->i = i;
@@ -58,6 +62,10 @@ Stock operator*(int n, const Stock &stock) {
     return s;
 }
 
+void friend_method() {
+
+}
+
 Stock Stock::operator*(const Stock &stock) {
     Stock s;
     s.n = n * stock.n;
@@ -66,4 +74,9 @@ Stock Stock::operator*(const Stock &stock) {
 
 void operator<<(std::ostream &os, const Stock &s) {
     os << s.n << std::endl;
+}
+
+// 类型转化函数
+Stock::operator int() {
+    return this->n;
 }

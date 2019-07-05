@@ -406,6 +406,25 @@ void test_main26() {
     std::cout << "stock8.n: " << stock8.n << std::endl;
     std::cout << "hello---- " << stock8;
 
+    /**
+     * 错误调用
+     * 由于构造函数explicit Stock(int n)
+     * 关键字禁止了使用该构造函数作为默认的类型转换函数，但是不能禁止显示类型转化
+     * 原理：
+     * 编译其自动调用对应的构造函数，生成一个临时的对象
+     * 然后用临时的对象给另外的对象赋值
+     */
+//    Stock stock9;
+//    stock9 = 9;
+
+//    Stock stock9;
+//    stock9 = Stock(9.9);
+
+    // 类型转化函数
+    Stock stock9(1000);
+    int sn = stock9;// 编译器自动调用类型转换函数
+    std::cout << "编译器自动调用类型转换函数： " << sn << std::endl;
+
 }
 
 int main() {

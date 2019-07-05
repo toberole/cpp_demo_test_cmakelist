@@ -15,6 +15,9 @@ public:
     // 默认构造函数农户
     Stock();
 
+    // explicit 可以禁止使用此构造函数作为默认的类型转换函数
+    explicit Stock(int n);
+
     // 设置默认值的 默认构造函数 等同于Stock() 两者只能定义一个
     // 默认构造函数 由默认参数值时 必须给所有参数提供默认值
     // Stock(int i = 1, std::string name = "hello");
@@ -24,6 +27,9 @@ public:
     // 析构函数
     ~Stock();
 
+    // 类型转换函数
+    // 将Stock对象转换为int
+    operator int ();
 public:
     void sys();
 
@@ -53,6 +59,8 @@ public:
 
     // 运算符号重载
     void operator+(Stock &stock);
+
+    friend void friend_method();
 
     // 友元函数 不是类的成员函数 但是可以访问类的所有成员
     friend Stock operator*(int n, const Stock &stock);
