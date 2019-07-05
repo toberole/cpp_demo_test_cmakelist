@@ -29,6 +29,12 @@ void Stock::sys() {
     std::cout << name << std::endl;
 }
 
+// 类的静态成员函数
+// 注意 声明的时候需要加上static 但是定义时不能加static
+void Stock::sys_static() {
+    std::cout << "sys_static" << std::endl;
+}
+
 void Stock::sys_const() const {
     std::cout << "sys_const" << std::endl;
 }

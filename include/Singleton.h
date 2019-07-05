@@ -1,8 +1,4 @@
-﻿//
-// Created by Apple on 2018/12/24.
-//
-
-#ifndef DEMO_TEST_SINGLETON_H
+﻿#ifndef DEMO_TEST_SINGLETON_H
 #define DEMO_TEST_SINGLETON_H
 
 

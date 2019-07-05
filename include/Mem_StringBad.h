@@ -13,6 +13,12 @@ public:
 
     StringBad();
 
+    // 拷贝构造函数
+    StringBad(const StringBad &s);
+
+    // 赋值运算符
+    StringBad &operator=(StringBad &stringBad);
+
     ~StringBad();
 
     friend std::ostream &operator<<(std::ostream &os, const StringBad &s);

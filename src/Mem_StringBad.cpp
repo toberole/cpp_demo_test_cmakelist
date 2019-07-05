@@ -23,10 +23,30 @@ StringBad::StringBad(const char *s) {
     std::cout << "**** StringBad 有参构造函数 num_strings: " << num_strings << std::endl;
 }
 
+StringBad::StringBad(const StringBad &s) {
+    num_strings++;
+    len = s.len;
+    str = new char[len];
+    std::strcpy(str, s.str);
+    std::cout << "**** StringBad 拷贝构造函数 num_strings: " << num_strings << std::endl;
+}
+
+StringBad &StringBad::operator=(StringBad &s) {
+    len = s.len;
+    delete[]str;
+
+    str = new char[len];
+    std::strcpy(str, s.str);
+    std::cout << "**** StringBad 拷贝构造函数 num_strings: " << num_strings << std::endl;
+
+    return *this;
+}
+
 StringBad::~StringBad() {
-    std::cout << "StringBad 析构函数" << std::endl;
+    std::cout << "StringBad 析构函数 num_strings: " << num_strings << std::endl;
 
     delete[]str;
+    str = nullptr;
     --num_strings;
 }
 

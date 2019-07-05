@@ -18,7 +18,8 @@ public:
     // explicit 可以禁止使用此构造函数作为默认的类型转换函数
     explicit Stock(int n);
 
-    // 设置默认值的 默认构造函数 等同于Stock() 两者只能定义一个
+    // 设置默认值的 默认构造函数 等同于Stock() 类中只能有一个默认构造函数
+    // 两者只能定义一个
     // 默认构造函数 由默认参数值时 必须给所有参数提供默认值
     // Stock(int i = 1, std::string name = "hello");
 
@@ -34,6 +35,8 @@ public:
 
 public:
     void sys();
+
+    static void sys_static();
 
     // 调用该方法不会改变任何值
     /**
