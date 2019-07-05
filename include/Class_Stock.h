@@ -29,7 +29,9 @@ public:
 
     // 类型转换函数
     // 将Stock对象转换为int
-    operator int ();
+    // explicit operator int (); explicit 关键字指明该转换函数必须为显示调用
+    operator int();
+
 public:
     void sys();
 
@@ -60,14 +62,16 @@ public:
     // 运算符号重载
     void operator+(Stock &stock);
 
-    friend void friend_method();
+    // 注意参数列表中一般会有一个引用类型的形参
+    friend void friend_method(Stock &stock);
 
     // 友元函数 不是类的成员函数 但是可以访问类的所有成员
     friend Stock operator*(int n, const Stock &stock);
 
     Stock operator*(const Stock &stock);
 
-    friend void operator<<(std::ostream &os, const Stock &s);
+    // 重载输出流 << 运算符
+    friend std::ostream& operator<<(std::ostream &os, const Stock &s);
 };
 
 

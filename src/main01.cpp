@@ -5,6 +5,7 @@
 #include <array>
 #include <string.h>
 #include <thread>
+#include <Class_Stock.h>
 
 #include "Vptr_Impl.h"
 #include "Data.h"
@@ -425,6 +426,12 @@ void test_main26() {
     int sn = stock9;// 编译器自动调用类型转换函数
     std::cout << "编译器自动调用类型转换函数： " << sn << std::endl;
 
+    // 调用友元函数
+    friend_method(stock9);
+
+    // std::cout
+    Stock stock10(100);
+    std::cout << stock10 << std::endl;
 }
 
 int main() {

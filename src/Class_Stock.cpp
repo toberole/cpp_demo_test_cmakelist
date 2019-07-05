@@ -62,8 +62,8 @@ Stock operator*(int n, const Stock &stock) {
     return s;
 }
 
-void friend_method() {
-
+void friend_method(Stock &stock) {
+    std::cout << "friend_method " << stock.i << std::endl;
 }
 
 Stock Stock::operator*(const Stock &stock) {
@@ -72,8 +72,9 @@ Stock Stock::operator*(const Stock &stock) {
     return s;
 }
 
-void operator<<(std::ostream &os, const Stock &s) {
-    os << s.n << std::endl;
+std::ostream &operator<<(std::ostream &os, const Stock &s) {
+    os << s.n;
+    return os;
 }
 
 // 类型转化函数
