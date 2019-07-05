@@ -434,7 +434,7 @@ void test_main26() {
     std::cout << stock10 << std::endl;
 }
 
-int main() {
+int main1() {
     test_main26();
 
     std::cout << "\npress any key to exit ..." << std::endl;
