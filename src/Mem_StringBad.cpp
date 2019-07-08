@@ -37,7 +37,7 @@ StringBad &StringBad::operator=(StringBad &s) {
 
     str = new char[len];
     std::strcpy(str, s.str);
-    std::cout << "**** StringBad 拷贝构造函数 num_strings: " << num_strings << std::endl;
+    std::cout << "**** StringBad 赋值运算符 num_strings: " << num_strings << std::endl;
 
     return *this;
 }

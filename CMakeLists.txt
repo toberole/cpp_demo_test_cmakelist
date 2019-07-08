@@ -57,4 +57,6 @@ include_directories(${HEADERS_DIR})
 add_executable(main_exec ${LOCAL_SRCS})
 
 # main_exec 依赖 ${EXERA_LIBS}
-target_link_libraries(main_exec ${EXERA_LIBS})
+target_link_libraries(main_exec
+        ${EXERA_LIBS}
+        )

@@ -10,6 +10,11 @@ Stock::Stock(int n) {
     this->n = n;
 }
 
+// 成员初始化列表语法
+Stock::Stock(int _n, int _i) : n(_n), i(_i) {
+    std::cout << "成员初始化列表语法 n:" << n << " i: " << i << std::endl;
+}
+
 //Stock::Stock(int i = 1, std::string name = "hello") {
 //    this->name = name;
 //    this->i = i;

@@ -6,7 +6,8 @@
 
 class Stock {
 public:
-    int n;
+    // C11可以在类中初始化，会被初始化列表初始化的值覆盖
+    int n = 1000;
 
 private:
     int i;
@@ -14,6 +15,13 @@ private:
 public:
     // 默认构造函数农户
     Stock();
+
+    // 成员初始化列表语法
+    // 如果初始化列表包含了所有的成员，那么会于默认构造函数冲突
+    // 必须用这种语法来初始化非静态const数据成员
+    // 必须用这种语法初始化const引用数据成员
+    // 成员初始化的顺序与他们在类中声明顺序相同
+    Stock(int n, int i);
 
     // explicit 可以禁止使用此构造函数作为默认的类型转换函数
     explicit Stock(int n);
@@ -74,7 +82,7 @@ public:
     Stock operator*(const Stock &stock);
 
     // 重载输出流 << 运算符
-    friend std::ostream& operator<<(std::ostream &os, const Stock &s);
+    friend std::ostream &operator<<(std::ostream &os, const Stock &s);
 };
 
 
