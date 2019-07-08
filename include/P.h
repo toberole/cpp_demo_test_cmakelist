@@ -1,6 +1,7 @@
 #ifndef DEMO_TEST_P_H
 #define DEMO_TEST_P_H
 
+#include <iostream>
 #include <string>
 
 class P {
@@ -19,7 +20,9 @@ public:
 
     P(int age, std::string name);
 
-
+    virtual void print() {
+        std::cout << "父类的print" << std::endl;
+    }
 };
 
 

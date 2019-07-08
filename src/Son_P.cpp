@@ -19,10 +19,10 @@ Son_P::~Son_P() {
     std::cout << "~Son_P 析构函数" << std::endl;
 }
 
-// 成员初始化列表的形式来调用父类的构造函数
-Son_P::Son_P(std::string &son_name, int key, int age, std::string name) : P(age, name) {
+// 成员初始化列表的形式来调用父类的构造函数[否则编译器调用父类的默认构造函数]
+// 同时初始化列表中初始化子类的数据成员
+Son_P::Son_P(std::string &son_name, int key, int age, std::string name) : P(age, name), key(key) {
     std::cout << "Son_P 有参构造函数 4" << std::endl;
-    this->key = key;
     this->son_name = son_name;
 }
 

@@ -36,7 +36,7 @@ void test_main2_5() {
     int age = 22;
 
 //    Son_P sp;
-//    Son_P sp1(son_name, key, age, name);
+    Son_P sp1(son_name, key, age, name);
 //    std::cout << "---------------------" << std::endl;
     // 错误写法示范
     Son_P sp2(name, key, age);
@@ -47,8 +47,35 @@ void test_main2_5() {
     std::cout << "3 name: " << sp3.name << std::endl;
 }
 
+/**
+ * 多态
+ */
+void test_main2_6() {
+    // 不能实现多态
+    P p1;
+    Son_P sp1;
+    p1 = sp1;
+    // 调用的是父类的print
+    p1.print();
+    std::cout << "-----------多态-----------" << std::endl;
+    // 多态
+    P *p_p = nullptr;
+    Son_P *sp_p = new Son_P();
+    p_p = sp_p;
+    // 调用的是子类的print
+    p_p->print();
+
+    std::cout << "-----------多态-----------" << std::endl;
+    // 多态
+    Son_P sonP;
+    P &p = sonP;
+    // 调用的是子类的print
+    p.print();
+
+}
+
 int main() {
-    test_main2_5();
+    test_main2_6();
 
     std::cout << "\npress any key to exit ..." << std::endl;
     getchar();
