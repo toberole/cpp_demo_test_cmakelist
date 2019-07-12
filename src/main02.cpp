@@ -1,7 +1,13 @@
 #include <iostream>
+#include <exception>
+#include <typeinfo>
+
+
 #include "Class_Stock.h"
 #include "Mem_StringBad.h"
 #include "Son_P.h"
+#include "Abstract_P.h"
+#include "Abstract_Son_P.h"
 
 void test_main2_1() {
     StringBad stringBad;
@@ -74,8 +80,96 @@ void test_main2_6() {
 
 }
 
-int main() {
-    test_main2_6();
+/**
+ * 析构函数
+ */
+void test_main2_7() {
+    std::cout << "----------- 析构函数 -----------" << std::endl;
+    P *vp = new Son_P();
+    delete (vp);
+}
+
+/**
+ * 纯虚函数
+ */
+void test_main2_8() {
+    Abstract_Son_P *son_p = new Abstract_Son_P();
+    Abstract_P *abstract_p = son_p;
+    abstract_p->sys();
+}
+
+/**
+ * 异常处理
+ *
+ */
+void test_main2_9() {
+    int i = 1;
+    int j = 2;
+
+    if (i + j == 3) {
+        throw "hello exeception";
+    }
+}
+
+/**
+ * 异常处理
+ */
+void test_main2_9_1() {
+    try {
+        test_main2_9();
+    } catch (const char *e) {// catch只能抓住与异常类型一致的异常
+        std::cout << "exception: " << e << std::endl;
+    } catch (...) {// 捕获任何类型的异常
+
+    }
+}
+
+/**
+ * 异常处理[C11不建议使用throw]
+ */
+void test_main2_10()throw(const char*) {
+
+}
+
+/**
+ * 异常处理[C11不建议使用]
+ */
+void test_main2_10_1() {
+    test_main2_10();
+}
+
+void test_main2_11_1() {
+    std::cout << "test_main2_11_1" << std::endl;
+}
+
+void test_main2_11() {
+    std::set_unexpected(test_main2_11_1);
+
+    throw "hello set_unexpected";
+}
+
+void test_main2_12() {
+    P p;
+    std::cout << "typeid: " << typeid(p).name() << std::endl;
+}
+
+void test_main2_13() {
+    std::string name = "hello world";
+    std::cout << "name: " << name << std::endl;
+    std::wstring name1(L"我h们");
+    std::cout << name1.length() << std::endl;
+    std::cout << name1.size() << std::endl;
+    name[0] = 'A';
+    std::cout << "name: " << name << std::endl;
+
+    std::wstring ss(L"我h们");
+    // wstring 2 string
+
+    std::wcout << "requiredSize: " << sizeof(ss) << std::endl;
+}
+
+int main02() {
+    test_main2_13();
 
     std::cout << "\npress any key to exit ..." << std::endl;
     getchar();
