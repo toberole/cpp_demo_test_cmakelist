@@ -130,10 +130,10 @@ X getX() {
 
 std::vector<X> Get1() {
     std::vector<X> temp = std::vector<X>(1);
-    X x;
-    std::cout << "push_back before" << std::endl;
-    temp.push_back(x);
-    std::cout << "push_back after" << std::endl;
+//    X x;
+//    std::cout << "push_back before" << std::endl;
+//    temp.push_back(x);
+//    std::cout << "push_back after" << std::endl;
     return temp;
 }
 
@@ -161,9 +161,13 @@ void test_stl3() {
     X x(getX());
 }
 
+void test_stl4() {
+    // STL支持移动语义
+    std::vector<X> xx = Get1();
+}
 
 int main() {
-    test_stl1();
+//    test_stl1();
 
     std::cout << "\npress any key to exit ..." << std::endl;
     getchar();
