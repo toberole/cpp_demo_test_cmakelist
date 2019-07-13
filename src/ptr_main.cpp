@@ -3,6 +3,10 @@
 #include <vector>
 #include <algorithm>// 算法
 
+#include <random>
+#include <thread>
+#include <functional>
+
 #include "Ptr_Test.h"
 
 void test_ptr_11(std::shared_ptr<Ptr_Test> ptr);
@@ -75,11 +79,30 @@ void test_ptr_3() {
     }
 
 
-    for_each(arr.begin(),arr.end(),foreach_);
+    for_each(arr.begin(), arr.end(), foreach_);
+
+    sort(arr.begin(), arr.end());
+
+    auto p = arr.begin();
+    for (p = arr.begin(); p != arr.end(); p++) {
+        std::cout << *p << "  ";
+    }
+
+    std::cout << std::endl;
+
+    // random_shuffle 乱序
+    random_shuffle(arr.begin(), arr.end());
+    for (p = arr.begin(); p != arr.end(); p++) {
+        std::cout << *p << "  ";
+    }
+}
+
+void test_ptr_4() {
 
 }
 
-int main() {
+
+int main__ptr() {
 
     test_ptr_3();
 
