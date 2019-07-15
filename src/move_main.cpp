@@ -34,7 +34,9 @@ void test_move2() {
     Useless useless(getObject());
 }
 
-int main() {
+
+
+int main_move() {
 
     std::cout << "\npress any key to exit ..." << std::endl;
     getchar();

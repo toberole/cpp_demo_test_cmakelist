@@ -29,7 +29,7 @@ Useless Useless::operator+(const Useless &f) const {
     return useless;
 }
 
-void Useless::showData() {
+void Useless::showData() const {
     std::cout << "showData: " << name << std::endl;
 }
 

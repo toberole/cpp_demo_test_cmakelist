@@ -28,7 +28,7 @@ public:
     //析构函数
     ~Useless();
 
-    void showData();
+    void showData() const;
 
 };
 
