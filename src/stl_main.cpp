@@ -166,7 +166,7 @@ void test_stl4() {
     std::vector<X> xx = Get1();
 }
 
-int main() {
+int main_stl() {
 //    test_stl1();
 
     std::cout << "\npress any key to exit ..." << std::endl;
