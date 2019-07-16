@@ -54,7 +54,8 @@ public:
     static int StaticMember(int a) { return a; }
 };
 
-int main() {
+int main_function() {
+    std::cout << "function main" << std::endl;
     // 普通函数
     Functional = TestFunc;
     int result = Functional(10);
