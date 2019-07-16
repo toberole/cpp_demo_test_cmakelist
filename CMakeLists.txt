@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.6.0)
 project(demo_test)
 
 set(CMAKE_CXX_STANDARD 14)
+#add_definitions(-std=c++11)
 
 message("++++++++++ 开始编译 ++++++++++")
 
