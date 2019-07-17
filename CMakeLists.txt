@@ -2,16 +2,17 @@ cmake_minimum_required(VERSION 3.6.0)
 
 project(demo_test)
 
+# C++ 版本
 set(CMAKE_CXX_STANDARD 14)
 #add_definitions(-std=c++11)
 
 message("++++++++++ 开始编译 ++++++++++")
 
 # 检测系统是否有支持工程使用的 API
-include (CheckFunctionExists)
+include(CheckFunctionExists)
 # 检测printf系统API是否存在
 # 存在则定义HAVE_PRINTF宏
-check_function_exists (printf HAVE_PRINTF)
+check_function_exists(printf HAVE_PRINTF)
 
 # 添加编译开关
 option(ENABLE_MAX "---- enable max ----" OFF)
@@ -49,7 +50,7 @@ list(APPEND HEADERS_DIR ./module_1/include)
 
 # 添加 module_1_lib_out库到 list变量EXERA_LIBS里面
 # 在linux需要显示依赖pthread
-list(APPEND EXERA_LIBS  module_1_lib_out pthread)
+list(APPEND EXERA_LIBS module_1_lib_out pthread)
 
 # 指定头文件
 include_directories(${HEADERS_DIR})

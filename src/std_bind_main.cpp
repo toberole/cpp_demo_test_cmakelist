@@ -3,8 +3,10 @@
 
 using namespace std;
 /**
-关于bind的用法：
-    可将bind函数看作是一个通用的函数适配器，它接受一个可调用对象，生成一个新的可调用对象来“适应”原对象的参数列表。
+    关于bind的用法：
+        可将bind函数看作是一个通用的函数适配器，它接受一个可调用对象，
+    生成一个新的可调用对象来“适应”原对象的参数列表。
+
     调用bind的一般形式：auto newCallable = bind(callable,arg_list);
     其中，newCallable本身是一个可调用对象，arg_list是一个逗号分隔的参数列表，对应给定的callable的参数。
     即，当我们调用newCallable时，newCallable会调用callable,并传给它arg_list中的参数。

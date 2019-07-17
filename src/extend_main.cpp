@@ -11,7 +11,7 @@ void test_extend1() {
     pa.PA_2::sys();
 }
 
-int main() {
+int main_extend() {
     std::cout << "extend main" << std::endl;
     test_extend1();
     std::cout << "\npress any key to exit ..." << std::endl;
