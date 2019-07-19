@@ -229,9 +229,6 @@ void test_thread8() {
 
  */
 
-
-
-
 int main() {
     std::cout << "thread main" << std::endl;
 
