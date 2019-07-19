@@ -229,10 +229,27 @@ void test_thread8() {
 
  */
 
+void test_thread9_method() {
+    bool b = true;
+    while (b) {
+        std::cout << std::this_thread::get_id() << std::endl;
+    }
+}
+
+void test_thread9() {
+    for (int i = 0; i < 200; ++i) {
+        std::thread th(test_thread9_method);
+        th.join();
+    }
+}
+
 int main() {
     std::cout << "thread main" << std::endl;
 
-    test_thread8();
+//    int hardware = std::thread::hardware_concurrency();
+//    std::cout << "hardware: " << hardware << std::endl;
+
+    test_thread9();
 
     std::cout << "\npress any key to exit ..." << std::endl;
     getchar();
