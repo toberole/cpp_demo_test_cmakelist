@@ -3,6 +3,8 @@
 #include <thread>
 #include <mutex>
 
+#include "ThreadPool.hpp"
+
 /**
  *  detach方式:
  *      启动的线程自主在后台运行，当前的代码继续往下执行，不等待新线程结束。
@@ -170,26 +172,26 @@ void test_thread6() {
 
  */
 int k = 0;
-std::mutex lock;
+std::mutex lock1;
 
 void test_thread_mutex() {
-    lock.lock();// 不能重复加锁
+    lock1.lock();// 不能重复加锁
     k++;
     std::cout << std::this_thread::get_id() << " : " << k << std::endl;
-    lock.unlock();
+    lock1.unlock();
 }
 
 
-std::recursive_mutex recursive_mutex;
+std::recursive_mutex recursive_mutex1;
 
 // 注意在使用recursive_mutex时，lock与unlock次数要一致
 void test_thread_recursive_mutex() {
-    recursive_mutex.lock();// 能重复加锁
-    recursive_mutex.lock();// 能重复加锁
+    recursive_mutex1.lock();// 能重复加锁
+    recursive_mutex1.lock();// 能重复加锁
     k++;
     std::cout << std::this_thread::get_id() << " : " << k << std::endl;
-    recursive_mutex.unlock();
-    recursive_mutex.unlock();
+    recursive_mutex1.unlock();
+    recursive_mutex1.unlock();
 }
 
 void test_thread7() {
@@ -243,13 +245,26 @@ void test_thread9() {
     }
 }
 
+// 线程池
+ThreadPool threadPool;
+void test_thread10() {
+
+    threadPool.AddTask([]() {
+        std::cout << "AddTask ..." << std::endl;
+    });
+
+    threadPool.AddTask([]() {
+        std::cout << "AddTask ..." << std::endl;
+    });
+}
+
 int main() {
     std::cout << "thread main" << std::endl;
 
 //    int hardware = std::thread::hardware_concurrency();
 //    std::cout << "hardware: " << hardware << std::endl;
 
-    test_thread9();
+    test_thread10();
 
     std::cout << "\npress any key to exit ..." << std::endl;
     getchar();
