@@ -247,7 +247,9 @@ void test_thread9() {
 
 // 线程池
 ThreadPool threadPool;
+
 void test_thread10() {
+
 
     threadPool.AddTask([]() {
         std::cout << "AddTask ..." << std::endl;
@@ -258,13 +260,12 @@ void test_thread10() {
     });
 }
 
-int main() {
-    std::cout << "thread main" << std::endl;
+int main_thread() {
+    std::cout << "... thread main ..." << std::endl;
 
-//    int hardware = std::thread::hardware_concurrency();
-//    std::cout << "hardware: " << hardware << std::endl;
-
-    test_thread10();
+//    char *str = "hello world";
+//    str[0] = 'k';
+//    std::cout << str << std::endl;
 
     std::cout << "\npress any key to exit ..." << std::endl;
     getchar();
