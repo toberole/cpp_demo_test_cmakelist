@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/d/code/cpp/cpp_demo_test_cmakelist/src/mymalloc.c
+mymalloc.h
+/mnt/d/code/cpp/cpp_demo_test_cmakelist/src/mymalloc.h
+stdio.h
+-
+stdlib.h
+-
+
+/mnt/d/code/cpp/cpp_demo_test_cmakelist/src/mymalloc.h
+stddef.h
+-
+
