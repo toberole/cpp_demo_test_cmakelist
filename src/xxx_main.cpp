@@ -15,7 +15,7 @@ void test_xxx_main1() {
     void *p = malloc(100);
 }
 
-int main() {
+int main_xxx() {
     std::cout << "xxx_main" << std::endl;
 
     test_xxx_main1();

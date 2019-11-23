@@ -1,7 +1,3 @@
-//
-// Created by Apple on 2019/7/9.
-//
-
 #include "Abstract_Son_P.h"
 #include <iostream>
 

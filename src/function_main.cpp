@@ -21,8 +21,9 @@ using namespace std;
 std::function对象最大的用处就是在实现函数回调，使用者需要注意，它不能被用来检查相等或者不相等，但是可以与NULL或者nullptr进行比较。
 
 function对象好处
-
-        std::function实现了一套类型消除机制，可以统一处理不同的函数对象类型。以前我们使用函数指针来完成这些；现在我们可以使用更安全的std::function来完成这些任务。
+        std::function实现了一套类型消除机制，
+        可以统一处理不同的函数对象类型。以前使用函数指针来完成这些；
+        现在可以使用更安全的std::function来完成这些任务。
 
  */
 
@@ -49,9 +50,9 @@ public:
 // 2.类静态函数
 class TestClass {
 public:
-    int ClassMember(int a) { return a; }
+    int ClassMember_Func(int a) { return a; }
 
-    static int StaticMember(int a) { return a; }
+    static int StaticMember_Func(int a) { return a; }
 };
 
 int main_function() {
@@ -74,12 +75,12 @@ int main_function() {
 
     // 类成员函数
     TestClass testObj;
-    Functional = std::bind(&TestClass::ClassMember, testObj, std::placeholders::_1);
+    Functional = std::bind(&TestClass::ClassMember_Func, testObj, std::placeholders::_1);
     result = Functional(40);
     cout << "类成员函数：" << result << endl;
 
     // 类静态函数
-    Functional = TestClass::StaticMember;
+    Functional = TestClass::StaticMember_Func;
     result = Functional(50);
     cout << "类静态函数：" << result << endl;
 

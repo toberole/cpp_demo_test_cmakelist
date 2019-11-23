@@ -14,7 +14,8 @@ public:
     using Task = std::function<void()>;
 
     ThreadPool(int numThreads = std::thread::hardware_concurrency()) : m_queue(MaxTaskCount) {
-        Start(numThreads);
+        // TODO 干扰测试 暂时屏蔽
+        // Start(numThreads);
     }
 
     ~ThreadPool(void) {
