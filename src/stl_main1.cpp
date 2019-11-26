@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "move_demo.cpp"
 
 class Execption_Test {
 public:
@@ -55,9 +56,25 @@ void test_exeception1() {
     }
 }
 
+void testx_1() {
+    Move_Data move_data;
+    std::cout << "*** *** ***" << std::endl;
+    Move_Data m = std::move(move_data);
+    std::cout << "*** *** ***" << std::endl;
+
+    std::string str("hello move");
+    std::string s1 = std::move(str);
+    std::cout << "s1: " << s1 << std::endl;
+    // TODO 注意被move之后的变量不能在使用了[行为不可预测]
+    std::cout << "str: " << str << std::endl;
+    if (str.empty()) {
+        std::cout << "move str is empty" << std::endl;
+    }
+};
+
 int main(int argc, char *args[]) {
     std::cout << "stl1_main.cpp" << std::endl;
 
-    test_exeception1();
+    testx_1();
     return 0;
 }
