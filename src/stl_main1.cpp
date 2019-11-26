@@ -72,7 +72,7 @@ void testx_1() {
     }
 };
 
-int main(int argc, char *args[]) {
+int main_stl1_main(int argc, char *args[]) {
     std::cout << "stl1_main.cpp" << std::endl;
 
     testx_1();
