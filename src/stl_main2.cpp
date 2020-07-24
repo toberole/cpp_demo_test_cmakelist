@@ -156,10 +156,12 @@ void test_stl_main10() {
     }
 }
 
+
 int main() {
     std::cout << "stl_main2.cpp" << std::endl;
 
     test_stl_main10();
+    new Stu_X;
 
     return 0;
 }
